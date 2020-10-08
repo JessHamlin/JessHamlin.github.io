@@ -23,6 +23,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="projects.html">Projects</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup-modal/login.html">Sign Up Modal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tic-tac-toe/tic-tac-toe.html">Tic Tac Toe Game</a>
+                </li>
             </ul>  
 
             <ul class="navbar-nav ml-auto">
@@ -58,26 +64,30 @@
             <br>
             <h3 style="margin-top:50px;">My Interests</h3>
 
-            <div class="card-deck">
-            <div class="card">
+            <div class="card-columns">
+                <div class="card" id="int1">
                     <div class="card-body"><img class="card-img-top" src="images/chemistry.jpg" alt="Chemistry Image"></div>
                     <div class="card-header">Chemistry</div>
                     <div class="card-body">A very interesting field that pairs well with Computer Science.</div>
+                    <input type="button" onclick="addCard(this.parentNode.id)" value="Add Tweet">
                 </div> 
-                <div class="card">
+                <div class="card" id="int2">
                     <div class="card-body"><img class="card-img-top" src="images/music.jpg" alt="Chemistry Image"></div>
                     <div class="card-header">Music</div>
                     <div class="card-body">A topic that brings people together to make some cool sounds.</div>
+                    <input type="button" onclick="addCard(this.parentNode.id)" value="Add Tweet">
                 </div> 
-                <div class="card">
+                <div class="card" id="int3">
                     <div class="card-body"><img class="card-img-top" src="images/modeling.png" alt="Chemistry Image"></div>
                     <div class="card-header">3D Modeling</div>
                     <div class="card-body">This topic allows for a lot of creativity and the making of some very interesting objects.</div>
-                </div> 
+                    <input type="button" onclick="addCard(this.parentNode.id)" value="Add Tweet">
+                </div>
             </div>
 
             <a role="button" class="btn btn-info" href="form.html">Add Interest</a>
             <a role="button" class="btn btn-info" href="mypage.html">Home Page Without Bootstrap</a>
+            <a role="button" class="btn btn-info" href="jasmine/SpecRunner.html">SpecRunner Unit Tests (No Return)</a>
 
             <footer style="background-color:grey;">
                 <div style="text-align: center;">
@@ -88,5 +98,27 @@
             </footer>
             
         </div>
+
+    <!-- Handle the add card script -->
+    <script>    
+        var numCards = 0;
+        function addCard(id) {
+            numCards++;
+            var cmd = (
+                "<div class='card' id='tweet" + numCards + "'> " +
+                    "<div class='card-header'>Tweet</div> " +
+                    "<div class='card-body'>This is a sample tweet.</div> " +
+                    "<input type='button' onclick='deleteCard(this.parentNode.id)' value='Delete Tweet'> " +
+                "</div>");
+            var tweet = $(cmd); 
+            tweet.appendTo(document.getElementById(id));
+        }
+
+        function deleteCard(id) {
+            numCards--;
+            document.getElementById(id).remove();
+        }
+    </script>
+
     </body>
 </html>
